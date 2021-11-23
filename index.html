@@ -1,0 +1,124 @@
+<!DOCTYPE html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="simulator pentru activitatea unei burse de valori">
+    <meta property="og:title" content="Simulator" />
+    <meta property="og:site_name" content="Simualtor Bursa de Valori" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ro_Ro" />
+    <title>Simulator</title>
+    <link rel=" stylesheet " href="appearance.css ">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.0/dist/chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="loading"><img id="loading-image" src="ajax-loader.gif" alt="Loading..." /></div>
+
+    <form id="SearchForm">
+        <input id="input" type="text" placeholder="AAPL, KO, FB, TSLA..." name="resp" required>
+        <input id="input" type="text" placeholder="DAILY, WEEKLY, MONTHLY..." name="respo" required>
+        <div class="buttons">
+            <button class="btn"><i class="fas fa-search-dollar"></i></button>
+            <button class="btn" onclick="window.location.reload();" id='delete'><i class="fas fa-sync"></i></button>
+        </div>
+    </form>
+
+    <div class="container">
+        <header>
+            <h1><span id="NameComp"></span>
+            </h1>
+            <h3 id="symb"> Simbol: <span id="Symbol"></span></h3>
+        </header>
+        <hr>
+        <h2>Data:<span id="today"></span></h2>
+        <h2>Ora:<span id="time"></span></h2>
+        <main class="Val">
+            <h1 id="vol">Volum:<span id="volume"></span></h1>
+        </main>
+        <div class="boxparent">
+            <div class="boxchild">
+                <h4>Pret de deschidere:<span id="open"></span></h4>
+                <h4>Pret de inchidere:<span id="close"></span></h4>
+                <h4>Pretul maxim:<span id="high"></span></h4>
+                <h4>Pretul minim:<span id="low"></span></h4>
+            </div>
+            <div class="boxchild">
+                <h4>Profitul brut:<span id="grossprofit"></span></h4>
+                <h4>Marja bruta: <span id="grossmargin"></span></h4>
+                <h4>Marja profitului: <span id="profitmargin"></span></h4>
+                <h4>DIVY: <span id="divy"></span></h4>
+
+
+            </div>
+            <div class="boxchild">
+                <h4>P/BV: <span id="p/bv"></span></h4>
+                <h4>PER:<span id="per"></span></h4>
+                <h4>P/S:<span id="p/s"></span></h4>
+                <h4>EPS: <span id="eps"></span> </h4>
+            </div>
+            <div class="boxchild">
+                <h4>EBITDA: <span id="ebitda"></span></h4>
+                <h4>EBIT: <span id="ebit"></span></h4>
+                <h4>EBT: <span id="ebt"></span></h4>
+                <h4>Cash-Flow: <span id="cf"></span></h4>
+            </div>
+        </div>
+
+        <hr>
+        <div id="card" class="chartcontainer">
+            <div class="chart">
+                <canvas id="MkChart" width="0.6vw" height="0.6vh"></canvas>
+                <canvas id="MkChart2" width="0.3vw" height="0.3vh"></canvas>
+
+            </div>
+
+        </div>
+        <hr>
+        <hr>
+
+        <h2>NOU</h2>
+        <div class="boxparent2">
+            <div class="boxchild2">
+                <div id="link_result1" class="result"></div>
+                <h2 id="title1" class="result"></h2>
+                <div id="description1" class="result"></div>
+
+            </div>
+
+            <div class="boxchild2">
+                <div id="link_result2" class="result"></div>
+                <h2 id="title2" class="result"></h2>
+                <div id="description2" class="result"></div>
+
+            </div>
+
+            <div class="boxchild2">
+                <div id="link_result3" class="result"></div>
+                <h2 id="title3" class="result"></h2>
+                <div id="description3" class="result"></div>
+
+
+            </div>
+        </div>
+        <hr>
+        <footer>
+            <span id="about"></span>
+        </footer>
+        <script src="index.js"></script>
+</body>
+
+</html>
+
+<!--standard, controlare fel in care se comporta site-ul in diverse contexte de rezolutie mai mica 
+    width=device-width-latimea telefonului va defini latimea site-ului, un fel de acceptare a 
+    faptului ca un telefon de 320px latime va avea la dispozitie 320px din site, sa ii afiseze;
+initial-scale-se joaca cu zoom-ul, daca sa faca scaling browser-ul(zoom in/zoom out)...
+<0.1-zoom-out, >0.1-zoom-in, tag important daca vrei sa faci site-ul responsive-->
